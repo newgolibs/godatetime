@@ -5,6 +5,10 @@ import (
 
 //对象必须实现的接口方法
 type FormatInterface interface {
+    /**    格式化成Y-m-d    */
+    Date()string
+    /**    格式化成Y-m-d H:i:s    */
+    DateTime()string
     /**    返回格式完的字符串    */
     Invoke()string
 

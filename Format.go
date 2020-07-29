@@ -94,11 +94,23 @@ func (this Format) DaysInMonth() int {
 	return 28
 }
 
+/**    格式化成Y-m-d    */
+func (this Format) Date() string {
+	this.FormatString = "Y-m-d"
+	return this.Invoke()
+}
+
+/**    格式化成Y-m-d H:i:s    */
+func (this Format) DateTime() string {
+	this.FormatString = "Y-m-d H:i:s"
+	return this.Invoke()
+}
 
 func (this Format) Invoke() string {
-	//初始化下成当前时间
-	this.Time = time.Now()
-	//
+	if this.Time.Year() == 1 {
+		// 初始化下成当前时间
+		this.Time = time.Now()
+	}
 	runes := []rune(this.FormatString)
 	buffer := bytes.NewBuffer(nil)
 	for i := 0; i < len(runes); {
